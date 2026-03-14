@@ -38,12 +38,24 @@ def fetch_subscribers(token: str) -> int:
     if data.get("status") != 0:
         raise RuntimeError(f"Viber API error: {data}")
 
-    # The field name varies by account type
-    count = data.get("subscribers_count") \
-         or data.get("members")          \
-         or data.get("subscribers")      \
-         or 0
-    return int(count)
+    # Print full response for debugging future issues
+    print(f"Viber API response keys: {list(data.keys())}")
+
+    # Try all known field names; handle both int and list responses
+    raw = (
+        data.get("subscribers_count")
+        or data.get("members_count")
+        or data.get("total")
+        or data.get("members")
+        or data.get("subscribers")
+        or 0
+    )
+
+    # Some endpoints return a list of subscriber objects — count its length
+    if isinstance(raw, list):
+        return len(raw)
+
+    return int(raw)
 
 
 def patch_html(count: int) -> None:
