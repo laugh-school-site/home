@@ -1,31 +1,26 @@
 #!/usr/bin/env python3
 """
 fetch_subscribers.py
-Fetches the Laugh School Viber channel subscriber count
+Fetches the Laugh School Viber community member count
 and patches the number into index.html between the marker comments.
-
-Run locally:  VIBER_TOKEN=your_token python fetch_subscribers.py
-Run via CI:   token is read from the VIBER_TOKEN environment variable
 """
 
 import os
 import re
 import json
 import urllib.request
-import urllib.error
 import sys
 
-VIBER_API = "https://chatapi.viber.com/pa/get_account_info"
 HTML_FILE = "index.html"
 MARKER_RE = re.compile(
     r"(<!--VIBER_SUBSCRIBERS-->).*?(<!--/VIBER_SUBSCRIBERS-->)",
     re.DOTALL,
 )
 
-def fetch_subscribers(token: str) -> int:
+def viber_post(endpoint: str, token: str, payload: bytes = b"{}") -> dict:
     req = urllib.request.Request(
-        VIBER_API,
-        data=b"{}",
+        f"https://chatapi.viber.com/pa/{endpoint}",
+        data=payload,
         headers={
             "X-Viber-Auth-Token": token,
             "Content-Type": "application/json",
@@ -33,29 +28,42 @@ def fetch_subscribers(token: str) -> int:
         method="POST",
     )
     with urllib.request.urlopen(req, timeout=10) as resp:
-        data = json.loads(resp.read())
+        return json.loads(resp.read())
 
-    if data.get("status") != 0:
-        raise RuntimeError(f"Viber API error: {data}")
 
-    # Print full response for debugging future issues
-    print(f"Viber API response keys: {list(data.keys())}")
+def fetch_subscribers(token: str) -> int:
+    # ── 1. get_account_info ───────────────────────────────────────────────────
+    info = viber_post("get_account_info", token)
+    print(f"[get_account_info] keys: {list(info.keys())}")
+    print(f"[get_account_info] full response: {json.dumps(info, ensure_ascii=False)}")
 
-    # Try all known field names; handle both int and list responses
-    raw = (
-        data.get("subscribers_count")
-        or data.get("members_count")
-        or data.get("total")
-        or data.get("members")
-        or data.get("subscribers")
-        or 0
-    )
+    # Try every known field
+    for field in ("members_count", "subscribers_count", "total", "members", "subscribers"):
+        raw = info.get(field)
+        if raw is not None:
+            count = len(raw) if isinstance(raw, list) else int(raw)
+            if count > 0:
+                print(f"[get_account_info] using field '{field}' = {count}")
+                return count
 
-    # Some endpoints return a list of subscriber objects — count its length
-    if isinstance(raw, list):
-        return len(raw)
+    # ── 2. get_online (community endpoint — returns present members) ──────────
+    try:
+        # get_online accepts a list of user IDs; empty body returns community online count
+        online = viber_post("get_online", token)
+        print(f"[get_online] full response: {json.dumps(online, ensure_ascii=False)}")
+        for field in ("users", "members", "total"):
+            raw = online.get(field)
+            if raw is not None:
+                count = len(raw) if isinstance(raw, list) else int(raw)
+                if count > 0:
+                    print(f"[get_online] using field '{field}' = {count}")
+                    return count
+    except Exception as e:
+        print(f"[get_online] failed: {e}")
 
-    return int(raw)
+    # ── 3. Couldn't determine count ───────────────────────────────────────────
+    print("WARNING: could not find a usable member count in any API response.")
+    return 0
 
 
 def patch_html(count: int) -> None:
@@ -66,15 +74,12 @@ def patch_html(count: int) -> None:
         print(f"ERROR: markers not found in {HTML_FILE}", file=sys.stderr)
         sys.exit(1)
 
-    new_html = MARKER_RE.sub(
-        rf"\g<1>{count}\g<2>",
-        html,
-    )
+    new_html = MARKER_RE.sub(rf"\g<1>{count}\g<2>", html)
 
     with open(HTML_FILE, "w", encoding="utf-8") as f:
         f.write(new_html)
 
-    print(f"✅  Patched {HTML_FILE} with subscriber count: {count}")
+    print(f"✅  Patched {HTML_FILE} with member count: {count}")
 
 
 if __name__ == "__main__":
