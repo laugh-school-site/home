@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAUGH SCHOOL™ | Ανώτατη Σχολή Memeολόγων</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Noto+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0F0F13;
+  --surface:  #17171E;
+  --surface2: #1F1F2A;
+  --border:   rgba(255,255,255,.08);
+  --gold:     #FFD60A;
+  --gold2:    #FF9500;
+  --pink:     #F72585;
+  --txt:      #EEEEF5;
+  --muted:    #7878A0;
+  --radius:   14px;
+  --fh:       'Unbounded', sans-serif;
+  --fb:       'Noto Sans', sans-serif;
+  --transition: .25s cubic-bezier(.4,0,.2,1);
+}
+[data-theme="light"] {
+  --bg:       #F5F4EF;
+  --surface:  #FFFFFF;
+  --surface2: #EBEBEB;
+  --border:   rgba(0,0,0,.09);
+  --txt:      #111118;
+  --muted:    #666680;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--fb); background: var(--bg); color: var(--txt); transition: background var(--transition), color var(--transition); overflow-x: hidden; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* HEADER */
+header { position: sticky; top: 0; z-index: 100; background: rgba(15,15,19,.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,214,10,.18); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 64px; }
+[data-theme="light"] header { background: rgba(245,244,239,.93); }
+.logo { font-family: var(--fh); font-size: 1.15rem; letter-spacing: 1px; background: linear-gradient(90deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+nav { display: flex; gap: 1.5rem; align-items: center; }
+nav a { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; transition: color var(--transition); }
+nav a:hover { color: var(--gold); }
+.icon-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; width: 36px; height: 36px; display: grid; place-items: center; cursor: pointer; font-size: 1rem; transition: background var(--transition); }
+.icon-btn:hover { background: var(--surface); }
+
+/* HERO */
+#home { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 5vw 60px; position: relative; overflow: hidden; }
+#home::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.012) 3px, rgba(255,255,255,.012) 4px); }
+.hero-glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(255,214,10,.1) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 20% 80%, rgba(247,37,133,.07) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 80% 80%, rgba(76,201,240,.07) 0%, transparent 70%); }
+.hero-inner { position: relative; z-index: 1; }
+.ministry-badge { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid rgba(255,214,10,.3); background: rgba(255,214,10,.07); color: var(--gold); font-size: .7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: .35rem 1rem; border-radius: 999px; margin-bottom: 2rem; animation: fadeUp .6s ease both; }
+.hero-title { font-family: var(--fh); font-size: clamp(3rem, 11vw, 9rem); font-weight: 900; line-height: .9; letter-spacing: -1px; animation: fadeUp .7s .1s ease both; }
+.hero-title .t-gold { background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-title .tm { font-size: .35em; vertical-align: super; -webkit-text-fill-color: var(--muted); opacity: .6; }
+.hero-tagline { font-style: italic; color: var(--muted); font-size: clamp(.85rem, 1.8vw, 1.1rem); margin-top: 1rem; animation: fadeUp .7s .2s ease both; }
+.hero-sub { margin-top: .6rem; font-size: clamp(.82rem, 1.5vw, 1rem); color: var(--muted); max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7; animation: fadeUp .7s .3s ease both; }
+.hero-cta { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fadeUp .7s .4s ease both; }
+.btn { display: inline-block; padding: .75rem 1.75rem; border-radius: 999px; font-family: var(--fb); font-weight: 700; font-size: .9rem; text-decoration: none; cursor: pointer; border: none; outline: none; transition: transform var(--transition), filter var(--transition), box-shadow var(--transition); }
+.btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.btn:active { transform: translateY(0); }
+.btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; font-weight: 800; box-shadow: 0 4px 24px rgba(255,214,10,.3); }
+.btn-ghost { background: var(--surface2); color: var(--txt); border: 1px solid var(--border); }
+.hero-stats { margin-top: 3.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; animation: fadeUp .7s .5s ease both; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.6rem; text-align: center; min-width: 110px; }
+.stat-n { font-family: var(--fh); font-size: 1.9rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+.stat-l { font-size: .7rem; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: .35rem; }
+.stat.viber-stat { border-color: rgba(255,214,10,.25); position: relative; }
+.stat.viber-stat::after { content: '🟢 live'; position: absolute; top: -10px; right: 10px; font-size: .6rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: var(--gold); color: #000; padding: .15rem .5rem; border-radius: 999px; }
+
+/* TICKER */
+.ticker { background: linear-gradient(90deg, var(--gold), var(--gold2)); overflow: hidden; padding: .55rem 0; }
+.ticker-track { display: flex; gap: 2.5rem; animation: tick 20s linear infinite; white-space: nowrap; width: max-content; }
+.ticker-item { font-family: var(--fh); font-size: .85rem; color: #000; flex-shrink: 0; letter-spacing: .5px; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* SHARED */
+section { padding: 90px 5vw; }
+.eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; display: block; }
+.sec-title { font-family: var(--fh); font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 900; letter-spacing: -.5px; line-height: 1.05; margin-bottom: .75rem; }
+.sec-sub { color: var(--muted); font-size: .95rem; line-height: 1.7; max-width: 560px; margin-bottom: 3rem; }
+
+/* BULLETIN BOARD */
+#board { background: var(--bg); }
+.board-list { display: flex; flex-direction: column; gap: 1rem; max-width: 780px; }
+.board-item { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: var(--radius); padding: 1.25rem 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: border-color var(--transition), transform var(--transition); }
+.board-item:hover { border-left-color: var(--gold2); transform: translateX(4px); }
+.board-date { font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); white-space: nowrap; padding-top: .1rem; min-width: 90px; }
+.board-text { font-size: .93rem; line-height: 1.65; }
+.board-text strong { color: var(--gold); }
+
+/* TEACHERS */
+#admins { background: var(--surface); }
+.teachers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.teacher-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; display: flex; gap: 1rem; align-items: center; transition: border-color var(--transition), transform var(--transition); }
+.teacher-card:hover { border-color: rgba(255,214,10,.3); transform: translateY(-3px); }
+.teacher-card:first-child { border-color: rgba(255,214,10,.4); background: rgba(255,214,10,.04); }
+.t-emoji { font-size: 2rem; flex-shrink: 0; }
+.t-name { font-family: var(--fh); font-size: .85rem; line-height: 1.3; margin-bottom: .2rem; }
+.t-role { font-size: .72rem; color: var(--muted); line-height: 1.4; }
+
+/* COURSES */
+#curriculum { background: var(--bg); }
+.courses-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.courses-table th { background: var(--surface2); font-family: var(--fh); font-size: .75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding: 1rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border); }
+.courses-table td { padding: 1rem 1.25rem; font-size: .9rem; border-bottom: 1px solid var(--border); }
+.courses-table tr:last-child td { border-bottom: none; }
+.courses-table tr:hover td { background: rgba(255,214,10,.03); }
+.stars { color: var(--gold); letter-spacing: 1px; font-size: .8rem; }
+.teacher-tag { display: inline-block; background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; font-size: .75rem; font-weight: 700; padding: .2rem .75rem; color: var(--muted); }
+
+/* JOKES */
+#anekdota { background: var(--surface); }
+.jokes-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+.joke-rotator { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; position: relative; overflow: hidden; }
+.joke-rotator::before { content: '"'; position: absolute; top: -.5rem; left: 1rem; font-family: var(--fh); font-size: 7rem; color: var(--gold); opacity: .08; line-height: 1; }
+.joke-label { font-size: .7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; display: block; }
+#joke-q { font-size: .95rem; line-height: 1.7; margin-bottom: .75rem; font-weight: 600; white-space: pre-line; }
+#joke-a { font-size: .95rem; line-height: 1.7; color: var(--gold); font-weight: 700; white-space: pre-line; }
+.joke-nav { margin-top: 1.5rem; display: flex; gap: .75rem; }
+.joke-nav-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; padding: .5rem 1.2rem; font-family: var(--fb); font-size: .82rem; font-weight: 700; color: var(--txt); cursor: pointer; transition: background var(--transition), border-color var(--transition), color var(--transition); }
+.joke-nav-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
+.academic-jokes { display: flex; flex-direction: column; gap: 1rem; }
+.academic-joke { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; font-size: .9rem; line-height: 1.7; border-left: 3px solid var(--pink); transition: transform var(--transition); }
+.academic-joke:hover { transform: translateX(4px); }
+
+/* DIPLOMA */
+#diploma { background: var(--bg); }
+.diploma-card { max-width: 620px; margin: 0 auto; background: var(--surface); border: 2px solid rgba(255,214,10,.3); border-radius: 20px; padding: 3rem; text-align: center; position: relative; overflow: hidden; }
+.diploma-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,214,10,.05) 0%, transparent 70%); pointer-events: none; }
+.diploma-scroll { font-size: 3rem; margin-bottom: 1rem; }
+.diploma-title { font-family: var(--fh); font-size: clamp(1.2rem, 3vw, 1.8rem); background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.25rem; }
+.diploma-body { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+.diploma-seal { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border); font-size: .75rem; color: var(--muted); font-weight: 600; letter-spacing: 1px; }
+.seal-line { flex: 1; height: 1px; background: var(--border); }
+
+/* FOOTER */
+footer { background: var(--surface); border-top: 1px solid rgba(255,214,10,.15); padding: 2.5rem 5vw; text-align: center; }
+.footer-logo { font-family: var(--fh); font-size: 1.5rem; background: linear-gradient(90deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: .75rem; }
+footer p { color: var(--muted); font-size: .82rem; line-height: 1.8; }
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: .75rem; }
+
+/* SETTINGS DRAWER */
+.drawer-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,.5); backdrop-filter: blur(4px); }
+.drawer-overlay.open { display: flex; align-items: flex-end; justify-content: flex-end; }
+.drawer { background: var(--surface); border-left: 1px solid var(--border); width: 300px; height: 100%; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; animation: slideIn .3s ease; }
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+.drawer h3 { font-family: var(--fh); font-size: 1rem; margin-bottom: .25rem; }
+.drawer-close { background: none; border: none; color: var(--muted); font-size: 1.25rem; cursor: pointer; align-self: flex-end; margin-bottom: .5rem; }
+.toggle-row { display: flex; align-items: center; justify-content: space-between; font-size: .9rem; font-weight: 600; }
+.toggle { position: relative; width: 46px; height: 26px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; inset: 0; background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; cursor: pointer; transition: background var(--transition); }
+.slider::before { content: ''; position: absolute; height: 18px; width: 18px; left: 3px; bottom: 3px; background: var(--muted); border-radius: 50%; transition: transform var(--transition), background var(--transition); }
+input:checked + .slider { background: var(--gold); border-color: var(--gold); }
+input:checked + .slider::before { transform: translateX(20px); background: #000; }
+.drawer-save { width: 100%; margin-top: auto; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { display: none; }
+  .jokes-layout { grid-template-columns: 1fr; }
+  .courses-table { display: block; overflow-x: auto; }
+  .drawer { width: 100%; }
+  .teachers-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) { .teachers-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#home" class="logo">😂 LAUGH SCHOOL™</a>
+  <nav>
+    <a href="#board">Ανακοινώσεις</a>
+    <a href="#admins">Καθηγητές</a>
+    <a href="#curriculum">Σπουδές</a>
+    <a href="#anekdota">Αστεία</a>
+    <a href="#diploma">Ορκωμοσία</a>
+  </nav>
+  <button class="icon-btn" onclick="openDrawer()" title="Ρυθμίσεις">⚙️</button>
+</header>
+
+<section id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="ministry-badge">✅ Εγκεκριμένο από το Υπουργείο Γελιού</div>
+    <h1 class="hero-title">
+      <span class="t-gold">LAUGH<span class="tm">™</span><br>SCHOOL</span>
+    </h1>
+    <p class="hero-tagline">"In Memes We Trust, In Normies We Bust"</p>
+    <p class="hero-sub">Επίσημη Σχολή Ανώτατης Memeολογικής Εκπαίδευσης &amp; Κοινότητα Viber</p>
+    <div class="hero-cta">
+      <a href="#board" class="btn btn-gold">📋 Ανακοινώσεις</a>
+      <a href="#anekdota" class="btn btn-ghost">😂 Αστεία</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">14</div><div class="stat-l">Καθηγητές</div></div>
+      <div class="stat"><div class="stat-n">6</div><div class="stat-l">Μαθήματα</div></div>
+      <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Memes</div></div>
+      <div class="stat viber-stat"><div class="stat-n" id="sub-count"><!--VIBER_SUBSCRIBERS-->—<!--/VIBER_SUBSCRIBERS--></div><div class="stat-l">Viber Subscribers</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">😂 Φρέσκα Memes Καθημερινά</span>
+    <span class="ticker-item">📋 Νέες Ανακοινώσεις</span>
+    <span class="ticker-item">🔥 Trending στο Viber</span>
+    <span class="ticker-item">💀 Certified Dank</span>
+    <span class="ticker-item">🎓 Memeολόγοι Αποφοιτούν</span>
+    <span class="ticker-item">📚 Εξεταστική σε Εξέλιξη</span>
+    <span class="ticker-item">🤌 No Context Needed</span>
+    <span class="ticker-item">😤 In Memes We Trust</span>
+    <span class="ticker-item">😂 Φρέσκα Memes Καθημερινά</span>
+    <span class="ticker-item">📋 Νέες Ανακοινώσεις</span>
+    <span class="ticker-item">🔥 Trending στο Viber</span>
+    <span class="ticker-item">💀 Certified Dank</span>
+    <span class="ticker-item">🎓 Memeολόγοι Αποφοιτούν</span>
+    <span class="ticker-item">📚 Εξεταστική σε Εξέλιξη</span>
+    <span class="ticker-item">🤌 No Context Needed</span>
+    <span class="ticker-item">😤 In Memes We Trust</span>
+  </div>
+</div>
+
+<section id="board">
+  <span class="eyebrow">Official Bulletin Board</span>
+  <h2 class="sec-title">Πίνακας Ανακοινώσεων</h2>
+  <p class="sec-sub">Οι τελευταίες ανακοινώσεις από την Πρυτανεία. Διαβάστε τες. Ή μην. Εξετάσεις δεν υπάρχουν.</p>
+  <div class="board-list">
+    <div class="board-item">
+      <span class="board-date">12 Μαρ 2026</span>
+      <p class="board-text"><strong>ΠΡΟΣΟΧΗ:</strong> Το μάθημα "Εισαγωγή στα Cringe Memes" ακυρώνεται λόγω έλλειψης σοβαρότητας (ευτυχώς).</p>
+    </div>
+    <div class="board-item">
+      <span class="board-date">10 Μαρ 2026</span>
+      <p class="board-text"><strong>ΕΚΔΡΟΜΗ:</strong> Η σχολή διοργανώνει ψηφιακή εκδρομή στους servers του Reddit. Φέρτε τα δικά σας templates.</p>
+    </div>
+    <div class="board-item">
+      <span class="board-date">08 Μαρ 2026</span>
+      <p class="board-text"><strong>ΒΑΘΜΟΛΟΓΙΕΣ:</strong> Οι βαθμοί του εξαμήνου ανέβηκαν. Όσοι πήραν κάτω από 5, παρακαλούνται να δουν 10 ώρες "Shrek" για επανεκπαίδευση.</p>
+    </div>
+  </div>
+</section>
+
+<section id="admins">
+  <span class="eyebrow">Το Ακαδημαϊκό Προσωπικό</span>
+  <h2 class="sec-title">Οι Καθηγητές μας</h2>
+  <p class="sec-sub">Αφιερωμένοι επαγγελματίες. Κάποιοι εξ αυτών κοιμούνται. Όλοι posting.</p>
+  <div class="teachers-grid">
+    <div class="teacher-card"><span class="t-emoji">👑</span><div><div class="t-name">The Principal</div><div class="t-role">Superadmin / Πρύτανης</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🌊</span><div><div class="t-name">Sourdomemedon</div><div class="t-role">Καθηγητής Κυματολογίας</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">📋</span><div><div class="t-name">Billbabill</div><div class="t-role">Σύμβουλος Meme Ποιότητας</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🍔</span><div><div class="t-name">Burger Memer</div><div class="t-role">Καθηγητής Γρήγορου Χιούμορ</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🚗</span><div><div class="t-name">CarMemeTeacher</div><div class="t-role">Επίκουρος Καθηγητής</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">☝️</span><div><div class="t-name">Da Meme One Teacher</div><div class="t-role">Αρχιμεμολόγος</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🇬🇧</span><div><div class="t-name">English Teacher</div><div class="t-role">Διεθνής Σύνδεσμος</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🎭</span><div><div class="t-name">Partali</div><div class="t-role">Ειδικός Λεκτικής Κωμωδίας</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🤷</span><div><div class="t-name">That One Teacher</div><div class="t-role">Ο Άλλος Καθηγητής</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🥶</span><div><div class="t-name">The Cold Memer Teacher</div><div class="t-role">Ψυχρά Ανέκδοτα &amp; Παγωμένα Jokes</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">😎</span><div><div class="t-name">The Cool Teacher</div><div class="t-role">Ανάλυση Καμένων Ανεκδότων</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🔱</span><div><div class="t-name">THE LORD OF THE MEMES</div><div class="t-role">Χιουμοριστική Ρητορική</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">📚</span><div><div class="t-name">Memedologia</div><div class="t-role">Θεωρία &amp; Ιστορία Meme</div></div></div>
+    <div class="teacher-card"><span class="t-emoji">🤓</span><div><div class="t-name">Class Nerd</div><div class="t-role">Τεχνική Υποστήριξη Φοιτητών</div></div></div>
+  </div>
+</section>
+
+<section id="curriculum">
+  <span class="eyebrow">Ακαδημαϊκό Έτος 2026</span>
+  <h2 class="sec-title">Πρόγραμμα Σπουδών</h2>
+  <p class="sec-sub">Όλα τα μαθήματα έχουν βαθμό δυσκολίας ⭐⭐⭐⭐⭐. Γιατί το χιούμορ είναι σοβαρή υπόθεση.</p>
+  <div style="overflow-x:auto; border-radius: var(--radius);">
+    <table class="courses-table">
+      <thead>
+        <tr><th>Μάθημα</th><th>Υπεύθυνος Καθηγητής</th><th>Δυσκολία</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ιστορία Ανεργίας και Ειδίκευση στην Κυματολογία</td><td><span class="teacher-tag">Sourdomemedon</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
+        <tr><td>Προπόνηση Χιουμοριστικής Ρητορικής</td><td><span class="teacher-tag">THE LORD OF THE MEMES</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
+        <tr><td>Ανάλυση Καμένων Ανεκδότων</td><td><span class="teacher-tag">The Cool Teacher</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
+        <tr><td>Ανάλυση Κρύων Ανεκδότων</td><td><span class="teacher-tag">The Cold Memer Teacher</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
+        <tr><td>Εισαγωγή στην Cringe Αντίσταση</td><td><span class="teacher-tag">The Principal</span></td><td><span class="stars">⭐⭐⭐⭐</span></td></tr>
+        <tr><td>Προχωρημένη Memeολογία &amp; Template Δημιουργία</td><td><span class="teacher-tag">Memedologia</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="anekdota">
+  <span class="eyebrow">Αρχείο Χιούμορ</span>
+  <h2 class="sec-title">Αστεία &amp; Ανέκδοτα</h2>
+  <p class="sec-sub">Επιλεγμένα με αγάπη. Αρχειοθετημένα με σοβαρότητα.</p>
+  <div class="jokes-layout">
+    <div class="joke-rotator">
+      <span class="joke-label">📅 Αστείο της Ημέρας</span>
+      <p id="joke-q"></p>
+      <p id="joke-a"></p>
+      <div class="joke-nav">
+        <button class="joke-nav-btn" onclick="prevJoke()">← Προηγούμενο</button>
+        <button class="joke-nav-btn" onclick="nextJoke()">🔄 Επόμενο</button>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow" style="margin-bottom:1rem;">Ακαδημαϊκά Αστεία</span>
+      <div class="academic-jokes">
+        <div class="academic-joke">Ο παππούς μου ήταν κομμουνιστής και μας μοίραζε ίσα σε όλους, κάτι κόμικ του Μίκυ Μάους. Έκανε διαμοιρασμό του Πλούτο...</div>
+        <div class="academic-joke">Μην περιμένεις τίποτα από κανέναν! (εκτός αν έχεις παραγγείλει...)</div>
+        <div class="academic-joke">Γιατί οι μαθηματικοί δεν φοβούνται τους εχθρούς; Γιατί ξέρουν ότι τα προβλήματα λύνονται!</div>
+        <div class="academic-joke">Ποιος είναι ο καλύτερος φίλος του μαθηματικού; Ο άξονας Χ — πάντα εκεί για στήριξη.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diploma">
+  <span class="eyebrow">Τελετή Αποφοίτησης</span>
+  <h2 class="sec-title">Ορκωμοσία</h2>
+  <p class="sec-sub">Μπράβο. Τα κατάφερες. Τώρα είσαι επίσημα Memeολόγος.</p>
+  <div class="diploma-card">
+    <div class="diploma-scroll">📜</div>
+    <div class="diploma-title">ΠΙΣΤΟΠΟΙΗΤΙΚΟ ΓΕΛΙΟΥ</div>
+    <p class="diploma-body">Ο παρών φοιτητής κρίνεται ικανός να διακρίνει το καλό meme από το cringe και να επιβιώσει στην ομαδική του Viber χωρίς να στείλει κάτι cringe. Αυτό είναι η υψηλότερη διάκριση που μπορεί να λάβει κάποιος.</p>
+    <a href="#" class="btn btn-gold" onclick="downloadDiploma(event)">🎓 Λήψη Πτυχίου</a>
+    <div class="diploma-seal">
+      <div class="seal-line"></div>
+      <span>LAUGH SCHOOL™ · 2026 · Viber Community</span>
+      <div class="seal-line"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">😂 LAUGH SCHOOL™</span>
+  <p>© 2026 LAUGH SCHOOL™ – Viber Community</p>
+  <p><em>Created by La.Sc.De. | Powered by United-Memers</em></p>
+  <div class="footer-links">
+    <a href="#board">Ανακοινώσεις</a>
+    <a href="#admins">Καθηγητές</a>
+    <a href="#curriculum">Σπουδές</a>
+    <a href="#anekdota">Αστεία</a>
+    <a href="#diploma">Ορκωμοσία</a>
+  </div>
+</footer>
+
+<div class="drawer-overlay" id="drawer" onclick="if(event.target===this)closeDrawer()">
+  <div class="drawer">
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    <h3>⚙️ Ρυθμίσεις Σχολής</h3>
+    <div class="toggle-row">
+      <span>🌙 Σκούρο / Ανοιχτό θέμα</span>
+      <label class="toggle">
+        <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <span>🔇 Σίγαση ειδοποιήσεων</span>
+      <label class="toggle">
+        <input type="checkbox" id="muteToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <button class="btn btn-gold drawer-save" onclick="closeDrawer()">Αποθήκευση &amp; Κλείσιμο</button>
+  </div>
+</div>
+
+<script>
+const jokes = [
+  { q: "— Γιατρέ, Γιατρέ! Δεν βλέπω πολύ καλά!", a: "— Κύριε μου, δεν είμαι ο γιατρός. Ο κρεοπώλης είμαι." },
+  { q: "— Έχεις μία ερώτηση και εγώ θα σου την απαντήσω. Ξέρω τα πάντα!\n— Αν ποτίσω τα κουνούπια με μελάνι, θα έχω δωρεάν τατουάζ;", a: "— Επόμενος!" },
+  { q: "— Τι κάνει ένας κουρέας που παίρνει ρεπό;", a: "— Κόβει βόλτες..." },
+  { q: "— Πού ζουν τα ψάρια;", a: "— Στη θάλασσα.\n— Ναι αλλά σε ποια διεύθυνση;" }
+];
+const now = new Date();
+let jIdx = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000) % jokes.length;
+function showJoke(i) {
+  document.getElementById('joke-q').textContent = jokes[i].q;
+  document.getElementById('joke-a').textContent = jokes[i].a;
+}
+function nextJoke() { jIdx = (jIdx + 1) % jokes.length; showJoke(jIdx); }
+function prevJoke() { jIdx = (jIdx - 1 + jokes.length) % jokes.length; showJoke(jIdx); }
+showJoke(jIdx);
+
+// Animate subscriber count on load
+(function animateCount() {
+  const el = document.getElementById('sub-count');
+  const raw = el.textContent.trim();
+  const target = parseInt(raw.replace(/\D/g, ''));
+  if (isNaN(target) || target === 0) return;
+  let current = 0;
+  const step = Math.max(1, Math.ceil(target / 50));
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current.toLocaleString('el-GR');
+    if (current >= target) clearInterval(timer);
+  }, 30);
+})();
+
+function toggleTheme() {
+  const light = document.getElementById('themeToggle').checked;
+  document.body.dataset.theme = light ? 'light' : '';
+  localStorage.setItem('ls-theme', light ? 'light' : 'dark');
+}
+(function initTheme() {
+  const saved = localStorage.getItem('ls-theme');
+  if (saved === 'light') {
+    document.body.dataset.theme = 'light';
+    const t = document.getElementById('themeToggle');
+    if (t) t.checked = true;
+  }
+})();
+
+function openDrawer()  { document.getElementById('drawer').classList.add('open'); }
+function closeDrawer() { document.getElementById('drawer').classList.remove('open'); }
+
+function downloadDiploma(e) {
+  e.preventDefault();
+  const a = document.createElement('a');
+  const content = encodeURIComponent(
+    'LAUGH SCHOOL™\n═══════════════════════════\nΠΙΣΤΟΠΟΙΗΤΙΚΟ ΓΕΛΙΟΥ\n\n' +
+    'Βεβαιώνεται ότι ο κάτοχος του παρόντος\nέχει ολοκληρώσει επιτυχώς τις σπουδές του\nστην Ανώτατη Σχολή Memeολόγων.\n\n' +
+    'Ημερομηνία: ' + new Date().toLocaleDateString('el-GR') + '\n\n' +
+    '"In Memes We Trust, In Normies We Bust"\n═══════════════════════════\n© 2026 LAUGH SCHOOL™ – Viber Community'
+  );
+  a.href = 'data:text/plain;charset=utf-8,' + content;
+  a.download = 'laugh_school_diploma.txt';
+  a.click();
+}
+</script>
+</body>
+</html>
