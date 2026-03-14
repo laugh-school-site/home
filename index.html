@@ -69,8 +69,6 @@ nav a:hover { color: var(--gold); }
 .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.6rem; text-align: center; min-width: 110px; }
 .stat-n { font-family: var(--fh); font-size: 1.9rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
 .stat-l { font-size: .7rem; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: .35rem; }
-.stat.viber-stat { border-color: rgba(255,214,10,.25); position: relative; }
-.stat.viber-stat::after { content: '🟢 live'; position: absolute; top: -10px; right: 10px; font-size: .6rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: var(--gold); color: #000; padding: .15rem .5rem; border-radius: 999px; }
 
 /* TICKER */
 .ticker { background: linear-gradient(90deg, var(--gold), var(--gold2)); overflow: hidden; padding: .55rem 0; }
@@ -204,10 +202,8 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
       <a href="#anekdota" class="btn btn-ghost">😂 Αστεία</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-n">14</div><div class="stat-l">Καθηγητές</div></div>
       <div class="stat"><div class="stat-n">6</div><div class="stat-l">Μαθήματα</div></div>
-      <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Memes</div></div>
-      <div class="stat viber-stat"><div class="stat-n" id="sub-count"><!--VIBER_SUBSCRIBERS-->14<!--/VIBER_SUBSCRIBERS--></div><div class="stat-l">Viber Subscribers</div></div>
+      <div class="stat"><div class="stat-n" id="sub-count"><!--VIBER_SUBSCRIBERS-->—<!--/VIBER_SUBSCRIBERS--></div><div class="stat-l">Καθηγητές</div></div>
     </div>
   </div>
 </section>
