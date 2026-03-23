@@ -136,6 +136,36 @@ section { padding: 90px 5vw; }
 .diploma-seal { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border); font-size: .75rem; color: var(--muted); font-weight: 600; letter-spacing: 1px; }
 .seal-line { flex: 1; height: 1px; background: var(--border); }
 
+/* DIPLOMA ENHANCED */
+.diploma-select-wrap { margin: 1.5rem 0 1rem; text-align: left; }
+.diploma-select-label { font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .75rem; }
+.course-pills { display: flex; flex-wrap: wrap; gap: .6rem; }
+.course-pill { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 999px; padding: .5rem 1.1rem; font-family: var(--fb); font-size: .85rem; font-weight: 700; color: var(--muted); cursor: pointer; transition: all var(--transition); }
+.course-pill:hover { border-color: rgba(255,214,10,.4); color: var(--txt); }
+.course-pill.active { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border-color: transparent; }
+
+/* DIPLOMA PREVIEW */
+.diploma-preview { background: var(--bg); border: 1.5px solid rgba(255,214,10,.2); border-radius: var(--radius); padding: 1.75rem; margin-top: 1.25rem; text-align: center; position: relative; }
+.dp-logo { font-size: 2rem; margin-bottom: .4rem; }
+.dp-school { font-family: var(--fh); font-size: .85rem; letter-spacing: 2px; color: var(--muted); margin-bottom: .3rem; }
+.dp-cert { font-family: var(--fh); font-size: 1.2rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: .5rem; }
+.dp-course { font-size: 1rem; font-weight: 700; color: var(--txt); margin-bottom: .5rem; }
+.dp-congrats { font-size: .85rem; color: var(--muted); margin-bottom: .75rem; font-style: italic; }
+.dp-name { font-family: var(--fh); font-size: 1.1rem; color: var(--gold); letter-spacing: 1px; min-height: 1.5rem; margin-bottom: .5rem; }
+.dp-date { font-size: .75rem; color: var(--muted); margin-bottom: .3rem; }
+.dp-teacher { font-size: .78rem; color: var(--muted); }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 400; background: rgba(0,0,0,.6); backdrop-filter: blur(6px); align-items: center; justify-content: center; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; width: min(420px, 90vw); animation: popIn .25s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes popIn { from { opacity:0; transform:scale(.88); } to { opacity:1; transform:scale(1); } }
+.modal-title { font-family: var(--fh); font-size: 1.2rem; margin-bottom: .5rem; }
+.modal-sub { font-size: .9rem; color: var(--muted); margin-bottom: 1.25rem; }
+.modal-input { width: 100%; background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); padding: .8rem 1rem; font-family: var(--fb); font-size: 1rem; color: var(--txt); outline: none; transition: border-color var(--transition); margin-bottom: 1.25rem; }
+.modal-input:focus { border-color: var(--gold); }
+.modal-actions { display: flex; gap: .75rem; }
+
 /* FOOTER */
 footer { background: var(--surface); border-top: 1px solid rgba(255,214,10,.15); padding: 2.5rem 5vw; text-align: center; }
 .footer-logo { font-family: var(--fh); font-size: 1.5rem; background: linear-gradient(90deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: .75rem; }
@@ -203,7 +233,7 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-n">6</div><div class="stat-l">Μαθήματα</div></div>
-      <div class="stat"><div class="stat-n" id="sub-count"><!--VIBER_SUBSCRIBERS-->14<!--/VIBER_SUBSCRIBERS--></div><div class="stat-l">Καθηγητές</div></div>
+      <div class="stat"><div class="stat-n" id="sub-count"><!--VIBER_SUBSCRIBERS-->—<!--/VIBER_SUBSCRIBERS--></div><div class="stat-l">Καθηγητές</div></div>
     </div>
   </div>
 </section>
@@ -226,7 +256,6 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
     <span class="ticker-item">📚 Εξεταστική σε Εξέλιξη</span>
     <span class="ticker-item">🤌 No Context Needed</span>
     <span class="ticker-item">😤 In Memes We Trust</span>
-    <span class="ticker-item">🎶 Ακούμε μόνο SourdoRadio εδώ</span>
   </div>
 </div>
 
@@ -236,12 +265,12 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
   <p class="sec-sub">Οι τελευταίες ανακοινώσεις από την Πρυτανεία. Διαβάστε τες. Ή μην. Εξετάσεις δεν υπάρχουν.</p>
   <div class="board-list">
     <div class="board-item">
-      <span class="board-date">12 Μαρ 2026</span>
-      <p class="board-text"><strong>ΠΡΟΣΟΧΗ:</strong> Το μάθημα "Εισαγωγή στα Cringe Memes" ακυρώνεται λόγω έλλειψης σοβαρότητας (ευτυχώς).</p>
+      <span class="board-date">22 Μαρ 2026</span>
+      <p class="board-text"><strong>ΕΚΠΛΗΞΗ:</strong> Θα δημοσιοποιηθεί ένα τεράστιο Project του Laugh School.</p>
     </div>
     <div class="board-item">
-      <span class="board-date">10 Μαρ 2026</span>
-      <p class="board-text"><strong>ΕΚΔΡΟΜΗ:</strong> Η σχολή διοργανώνει ψηφιακή εκδρομή στους servers του Reddit. Φέρτε τα δικά σας templates.</p>
+      <span class="board-date">16 Μαρ 2026</span>
+      <p class="board-text"><strong>UPDATE:</strong> Η ιστοσελίδα θα κάνει ένα μεγάλο Update.</p>
     </div>
     <div class="board-item">
       <span class="board-date">08 Μαρ 2026</span>
@@ -275,7 +304,7 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
 <section id="curriculum">
   <span class="eyebrow">Ακαδημαϊκό Έτος 2026</span>
   <h2 class="sec-title">Πρόγραμμα Σπουδών</h2>
-  <p class="sec-sub">Όλα τα μαθήματα έχουν βαθμό δυσκολίας, γιατί το χιούμορ είναι σοβαρή υπόθεση.</p>
+  <p class="sec-sub">Όλα τα μαθήματα έχουν βαθμό δυσκολίας ⭐⭐⭐⭐⭐. Γιατί το χιούμορ είναι σοβαρή υπόθεση.</p>
   <div style="overflow-x:auto; border-radius: var(--radius);">
     <table class="courses-table">
       <thead>
@@ -283,7 +312,7 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
       </thead>
       <tbody>
         <tr><td>Ιστορία Ανεργίας και Ειδίκευση στην Κυματολογία</td><td><span class="teacher-tag">Sourdomemedon</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
-        <tr><td>Προπόνηση Χιουμοριστικής Ρητορικής</td><td><span class="teacher-tag">THE LORD OF THE MEMES</span></td><td><span class="stars">⭐⭐⭐⭐</span></td></tr>
+        <tr><td>Προπόνηση Χιουμοριστικής Ρητορικής</td><td><span class="teacher-tag">THE LORD OF THE MEMES</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
         <tr><td>Ανάλυση Καμένων Ανεκδότων</td><td><span class="teacher-tag">The Cool Teacher</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
         <tr><td>Ανάλυση Κρύων Ανεκδότων</td><td><span class="teacher-tag">The Cold Memer Teacher</span></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td></tr>
         <tr><td>Εισαγωγή στην Cringe Αντίσταση</td><td><span class="teacher-tag">The Principal</span></td><td><span class="stars">⭐⭐⭐⭐</span></td></tr>
@@ -323,15 +352,57 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
   <span class="eyebrow">Τελετή Αποφοίτησης</span>
   <h2 class="sec-title">Ορκωμοσία</h2>
   <p class="sec-sub">Μπράβο. Τα κατάφερες. Τώρα είσαι επίσημα Memeολόγος.</p>
+
   <div class="diploma-card">
     <div class="diploma-scroll">📜</div>
     <div class="diploma-title">ΠΙΣΤΟΠΟΙΗΤΙΚΟ ΓΕΛΙΟΥ</div>
-    <p class="diploma-body">Ο παρών φοιτητής κρίνεται ικανός να διακρίνει το καλό meme από το cringe και να επιβιώσει στην ομαδική του Viber χωρίς να στείλει κάτι cringe. Αυτό είναι η υψηλότερη διάκριση που μπορεί να λάβει κάποιος.</p>
-    <a href="#" class="btn btn-gold">🎓 Λήψη Πτυχίου (ΠΡΟΣΕΧΩΣ)</a>
+    <p class="diploma-body">Επίλεξε το μάθημά σου και κατέβασε το επίσημο πτυχίο σου από την Ανώτατη Σχολή Memeολόγων.</p>
+
+    <!-- Course selector -->
+    <div class="diploma-select-wrap">
+      <label class="diploma-select-label">📚 Επίλεξε Μάθημα</label>
+      <div class="course-pills">
+        <button class="course-pill active" data-course="Cold Memes" data-emoji="🥶" data-teacher="The Cold Memer Teacher">🥶 Cold Memes</button>
+        <button class="course-pill" data-course="Hot Memes" data-emoji="🔥" data-teacher="THE LORD OF THE MEMES">🔥 Hot Memes</button>
+        <button class="course-pill" data-course="Waves" data-emoji="🌊" data-teacher="Sourdomemedon">🌊 Waves</button>
+        <button class="course-pill" data-course="Templates" data-emoji="🎨" data-teacher="Memedologia">🎨 Templates</button>
+        <button class="course-pill" data-course="PHTWR" data-emoji="📸" data-teacher="Burger Memer">📸 PHTWR</button>
+        <button class="course-pill" data-course="CRINGE" data-emoji="😬" data-teacher="The Principal">😬 CRINGE</button>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div class="diploma-preview">
+      <div class="dp-logo">😂</div>
+      <div class="dp-school">LAUGH SCHOOL™</div>
+      <div class="dp-cert">ΠΙΣΤΟΠΟΙΗΤΙΚΟ ΓΕΛΙΟΥ</div>
+      <div class="dp-course" id="dp-course">🥶 Cold Memes</div>
+      <div class="dp-congrats">Congrats! You passed your class!</div>
+      <div class="dp-name" id="dp-name">— Όνομα Φοιτητή —</div>
+      <div class="dp-date" id="dp-date"></div>
+      <div class="dp-teacher">Υπεύθυνος: <span id="dp-teacher">The Cold Memer Teacher</span></div>
+    </div>
+
+    <button class="btn btn-gold" onclick="openDiplomaModal()" style="margin-top:1.5rem;">🎓 Λήψη Πτυχίου</button>
+
     <div class="diploma-seal">
       <div class="seal-line"></div>
       <span>LAUGH SCHOOL™ · 2026 · Viber Community</span>
       <div class="seal-line"></div>
+    </div>
+  </div>
+
+  <!-- Name modal -->
+  <div class="modal-overlay" id="diplomaModal" onclick="if(event.target===this)closeDiplomaModal()">
+    <div class="modal">
+      <div class="modal-title">🎓 Λήψη Πτυχίου</div>
+      <p class="modal-sub">Δώσε το όνομα του φοιτητή Memeολογίας:</p>
+      <input type="text" id="studentName" class="modal-input" placeholder="π.χ. Νίκος Παπαδόπουλος" maxlength="60"
+             onkeydown="if(event.key==='Enter')confirmDiploma()">
+      <div class="modal-actions">
+        <button class="btn btn-gold" onclick="confirmDiploma()">OK</button>
+        <button class="btn btn-ghost" onclick="closeDiplomaModal()">Cancel</button>
+      </div>
     </div>
   </div>
 </section>
@@ -422,17 +493,295 @@ function closeDrawer() { document.getElementById('drawer').classList.remove('ope
 
 function downloadDiploma(e) {
   e.preventDefault();
+
+  const date = new Date().toLocaleDateString('el-GR', { year: 'numeric', month: 'long', day: 'numeric' });
+  const diplomaHTML = `<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>Πιστοποιητικό Γελιού – LAUGH SCHOOL™</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1506;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh;
+    font-family: 'Crimson Text', serif;
+  }
+  .page {
+    width: 794px; min-height: 560px;
+    background: #fffdf4;
+    position: relative;
+    padding: 60px 70px;
+    text-align: center;
+    box-shadow: 0 0 80px rgba(0,0,0,.6);
+  }
+  /* outer border */
+  .page::before {
+    content: '';
+    position: absolute; inset: 14px;
+    border: 2px solid #b8922a;
+    pointer-events: none;
+  }
+  /* inner border */
+  .page::after {
+    content: '';
+    position: absolute; inset: 20px;
+    border: 1px solid #d4aa44;
+    pointer-events: none;
+  }
+  /* corner ornaments */
+  .corner {
+    position: absolute; font-size: 1.6rem; color: #b8922a; line-height: 1;
+    width: 32px; height: 32px; display: grid; place-items: center;
+  }
+  .corner.tl { top: 26px; left: 26px; }
+  .corner.tr { top: 26px; right: 26px; }
+  .corner.bl { bottom: 26px; left: 26px; }
+  .corner.br { bottom: 26px; right: 26px; }
+  .inner { position: relative; z-index: 1; }
+  .ministry {
+    font-family: 'Cinzel', serif;
+    font-size: .62rem; letter-spacing: 3px; text-transform: uppercase;
+    color: #8a6a1a; margin-bottom: 1.5rem;
+  }
+  .school-name {
+    font-family: 'Cinzel', serif;
+    font-size: 2.6rem; font-weight: 900;
+    background: linear-gradient(135deg, #b8922a, #f0c940, #b8922a);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 4px; line-height: 1; margin-bottom: .3rem;
+  }
+  .school-sub {
+    font-family: 'Cinzel', serif;
+    font-size: .65rem; letter-spacing: 3px; color: #8a6a1a;
+    text-transform: uppercase; margin-bottom: 2rem;
+  }
+  .divider {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 0 auto 2rem; max-width: 500px;
+  }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #b8922a, transparent); }
+  .divider-gem { color: #b8922a; font-size: 1.1rem; }
+  .cert-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem; font-weight: 700;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: #5a3e0a; margin-bottom: 1.5rem;
+  }
+  .cert-body {
+    font-size: 1.05rem; line-height: 1.9; color: #3a2e18;
+    max-width: 520px; margin: 0 auto 1.75rem;
+  }
+  .cert-body strong {
+    font-family: 'Cinzel', serif; font-size: 1.15rem;
+    color: #8a6a1a; font-weight: 700;
+  }
+  .date-line {
+    font-style: italic; font-size: .95rem; color: #8a6a1a;
+    margin-bottom: 2.5rem;
+  }
+  .seals {
+    display: flex; justify-content: space-around; align-items: flex-end;
+    margin-top: 1rem;
+  }
+  .seal { text-align: center; }
+  .seal-line { width: 140px; height: 1px; background: #b8922a; margin: .4rem auto 0; }
+  .seal-label {
+    font-family: 'Cinzel', serif;
+    font-size: .58rem; letter-spacing: 2px; text-transform: uppercase;
+    color: #8a6a1a; margin-top: .3rem;
+  }
+  .seal-emoji { font-size: 2.2rem; margin-bottom: .3rem; }
+  .tagline {
+    font-style: italic; font-size: .85rem; color: #8a6a1a;
+    margin-top: 2rem; letter-spacing: 1px;
+  }
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; }
+    .print-btn { display: none !important; }
+  }
+  .print-btn {
+    position: fixed; bottom: 24px; right: 24px;
+    background: linear-gradient(135deg, #b8922a, #f0c940);
+    color: #1a1506; border: none; border-radius: 999px;
+    padding: .7rem 1.6rem; font-family: 'Cinzel', serif;
+    font-size: .8rem; font-weight: 700; letter-spacing: 1px;
+    cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.4);
+    text-transform: uppercase;
+  }
+  .print-btn:hover { filter: brightness(1.1); }
+</style>
+</head>
+<body>
+<div class="page">
+  <span class="corner tl">✦</span>
+  <span class="corner tr">✦</span>
+  <span class="corner bl">✦</span>
+  <span class="corner br">✦</span>
+  <div class="inner">
+    <p class="ministry">✅ Εγκεκριμένο από το Υπουργείο Γελιού &nbsp;·&nbsp; Ίδρυμα Ανώτατης Memeολογικής Εκπαίδευσης</p>
+    <div class="school-name">LAUGH SCHOOL™</div>
+    <p class="school-sub">Ανώτατη Σχολή Memeολόγων &nbsp;·&nbsp; Viber Community</p>
+    <div class="divider"><div class="divider-line"></div><span class="divider-gem">❧</span><div class="divider-line"></div></div>
+    <p class="cert-title">📜 Πιστοποιητικό Γελιού 📜</p>
+    <p class="cert-body">
+      Βεβαιώνεται δια του παρόντος ότι<br>
+      <strong>ο κάτοχος του παρόντος εγγράφου</strong><br>
+      έχει ολοκληρώσει επιτυχώς τις σπουδές του στην<br>
+      Ανώτατη Σχολή Memeολόγων, αποδεικνύοντας<br>
+      εξαιρετική ικανότητα διάκρισης του καλού meme<br>
+      από το cringe και επιβίωσης στην ομαδική του Viber.
+    </p>
+    <p class="date-line">Αθήνα, ${date}</p>
+    <div class="divider"><div class="divider-line"></div><span class="divider-gem">✦</span><div class="divider-line"></div></div>
+    <div class="seals">
+      <div class="seal">
+        <div class="seal-emoji">👑</div>
+        <div class="seal-line"></div>
+        <div class="seal-label">The Principal<br>Πρύτανης</div>
+      </div>
+      <div class="seal">
+        <div class="seal-emoji">📜</div>
+        <div class="seal-line"></div>
+        <div class="seal-label">Σφραγίς<br>Laugh School™</div>
+      </div>
+      <div class="seal">
+        <div class="seal-emoji">🔱</div>
+        <div class="seal-line"></div>
+        <div class="seal-label">Lord of the Memes<br>Κοσμήτορας</div>
+      </div>
+    </div>
+    <p class="tagline">"In Memes We Trust, In Normies We Bust"</p>
+  </div>
+</div>
+<button class="print-btn" onclick="window.print()">🖨 Εκτύπωση / Αποθήκευση PDF</button>
+</body>
+</html>`;
+
+  const blob = new Blob([diplomaHTML], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  const content = encodeURIComponent(
-    'LAUGH SCHOOL™\n═══════════════════════════\nΠΙΣΤΟΠΟΙΗΤΙΚΟ ΓΕΛΙΟΥ\n\n' +
-    'Βεβαιώνεται ότι ο κάτοχος του παρόντος\nέχει ολοκληρώσει επιτυχώς τις σπουδές του\nστην Ανώτατη Σχολή Memeολόγων.\n\n' +
-    'Ημερομηνία: ' + new Date().toLocaleDateString('el-GR') + '\n\n' +
-    '"In Memes We Trust, In Normies We Bust"\n═══════════════════════════\n© 2026 LAUGH SCHOOL™ – Viber Community'
-  );
-  a.href = 'data:text/plain;charset=utf-8,' + content;
-  a.download = 'laugh_school_diploma.md';
+  a.href = url;
+  a.download = 'laugh_school_diploma.html';
   a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+
+// ── DIPLOMA ────────────────────────────────────────────────────────────────────
+let selectedCourse = { course: 'Cold Memes', emoji: '🥶', teacher: 'The Cold Memer Teacher' };
+
+// Course pill selection
+document.querySelectorAll('.course-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.course-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedCourse = { course: btn.dataset.course, emoji: btn.dataset.emoji, teacher: btn.dataset.teacher };
+    document.getElementById('dp-course').textContent = btn.dataset.emoji + ' ' + btn.dataset.course;
+    document.getElementById('dp-teacher').textContent = btn.dataset.teacher;
+  });
+});
+
+// Set today's date in preview on load
+document.getElementById('dp-date').textContent = new Date().toLocaleDateString('el-GR', { year: 'numeric', month: 'long', day: 'numeric' });
+
+function openDiplomaModal() {
+  document.getElementById('diplomaModal').classList.add('open');
+  setTimeout(() => document.getElementById('studentName').focus(), 100);
+}
+function closeDiplomaModal() {
+  document.getElementById('diplomaModal').classList.remove('open');
+  document.getElementById('studentName').value = '';
+}
+function confirmDiploma() {
+  const name = document.getElementById('studentName').value.trim() || 'Ανώνυμος Memeολόγος';
+  closeDiplomaModal();
+  downloadDiploma(name);
+}
+
+function downloadDiploma(studentName) {
+  const date = new Date().toLocaleDateString('el-GR', { year: 'numeric', month: 'long', day: 'numeric' });
+  const diplomaHTML = `<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>Πιστοποιητικό Γελιού – LAUGH SCHOOL™</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1506; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Crimson Text', serif; }
+  .page { width: 794px; min-height: 560px; background: #fffdf4; position: relative; padding: 60px 70px; text-align: center; box-shadow: 0 0 80px rgba(0,0,0,.6); }
+  .page::before { content: ''; position: absolute; inset: 14px; border: 2px solid #b8922a; pointer-events: none; }
+  .page::after  { content: ''; position: absolute; inset: 20px; border: 1px solid #d4aa44; pointer-events: none; }
+  .corner { position: absolute; font-size: 1.6rem; color: #b8922a; line-height: 1; width: 32px; height: 32px; display: grid; place-items: center; }
+  .corner.tl { top: 26px; left: 26px; } .corner.tr { top: 26px; right: 26px; }
+  .corner.bl { bottom: 26px; left: 26px; } .corner.br { bottom: 26px; right: 26px; }
+  .inner { position: relative; z-index: 1; }
+  .ministry { font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: 3px; text-transform: uppercase; color: #8a6a1a; margin-bottom: 1.5rem; }
+  .school-name { font-family: 'Cinzel', serif; font-size: 2.6rem; font-weight: 900; background: linear-gradient(135deg, #b8922a, #f0c940, #b8922a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; line-height: 1; margin-bottom: .3rem; }
+  .school-sub { font-family: 'Cinzel', serif; font-size: .65rem; letter-spacing: 3px; color: #8a6a1a; text-transform: uppercase; margin-bottom: 2rem; }
+  .divider { display: flex; align-items: center; gap: 1rem; margin: 0 auto 2rem; max-width: 500px; }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #b8922a, transparent); }
+  .cert-title { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #5a3e0a; margin-bottom: 1.5rem; }
+  .cert-body { font-size: 1.05rem; line-height: 1.9; color: #3a2e18; max-width: 520px; margin: 0 auto 1.75rem; }
+  .cert-body strong { font-family: 'Cinzel', serif; font-size: 1.15rem; color: #8a6a1a; font-weight: 700; }
+  .cert-body .course-badge { display: inline-block; background: linear-gradient(135deg,#b8922a,#f0c940); color: #1a1506; font-family: 'Cinzel', serif; font-size: .9rem; font-weight: 700; padding: .15rem .8rem; border-radius: 999px; margin-top: .3rem; }
+  .date-line { font-style: italic; font-size: .95rem; color: #8a6a1a; margin-bottom: 2.5rem; }
+  .seals { display: flex; justify-content: space-around; align-items: flex-end; margin-top: 1rem; }
+  .seal { text-align: center; }
+  .seal-line { width: 140px; height: 1px; background: #b8922a; margin: .4rem auto 0; }
+  .seal-label { font-family: 'Cinzel', serif; font-size: .58rem; letter-spacing: 2px; text-transform: uppercase; color: #8a6a1a; margin-top: .3rem; }
+  .seal-emoji { font-size: 2.2rem; margin-bottom: .3rem; }
+  .tagline { font-style: italic; font-size: .85rem; color: #8a6a1a; margin-top: 2rem; letter-spacing: 1px; }
+  @media print { body { background: white; } .page { box-shadow: none; } .print-btn { display: none !important; } }
+  .print-btn { position: fixed; bottom: 24px; right: 24px; background: linear-gradient(135deg, #b8922a, #f0c940); color: #1a1506; border: none; border-radius: 999px; padding: .7rem 1.6rem; font-family: 'Cinzel', serif; font-size: .8rem; font-weight: 700; letter-spacing: 1px; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.4); text-transform: uppercase; }
+  .print-btn:hover { filter: brightness(1.1); }
+</style>
+</head>
+<body>
+<div class="page">
+  <span class="corner tl">✦</span><span class="corner tr">✦</span>
+  <span class="corner bl">✦</span><span class="corner br">✦</span>
+  <div class="inner">
+    <p class="ministry">✅ Εγκεκριμένο από το Υπουργείο Γελιού · Ίδρυμα Ανώτατης Memeολογικής Εκπαίδευσης</p>
+    <div class="school-name">LAUGH SCHOOL™</div>
+    <p class="school-sub">Ανώτατη Σχολή Memeολόγων · Viber Community</p>
+    <div class="divider"><div class="divider-line"></div><span style="color:#b8922a">❧</span><div class="divider-line"></div></div>
+    <p class="cert-title">📜 Πιστοποιητικό Γελιού 📜</p>
+    <p class="cert-body">
+      Βεβαιώνεται δια του παρόντος ότι<br>
+      <strong>${studentName}</strong><br>
+      έχει ολοκληρώσει επιτυχώς το μάθημα<br>
+      <span class="course-badge">${selectedCourse.emoji} ${selectedCourse.course}</span><br><br>
+      υπό την επίβλεψη του <strong>${selectedCourse.teacher}</strong>,<br>
+      αποδεικνύοντας εξαιρετική ικανότητα διάκρισης<br>
+      του καλού meme από το cringe.
+    </p>
+    <p class="date-line">Αθήνα, ${date}</p>
+    <div class="divider"><div class="divider-line"></div><span style="color:#b8922a">✦</span><div class="divider-line"></div></div>
+    <div class="seals">
+      <div class="seal"><div class="seal-emoji">👑</div><div class="seal-line"></div><div class="seal-label">The Principal<br>Πρύτανης</div></div>
+      <div class="seal"><div class="seal-emoji">📜</div><div class="seal-line"></div><div class="seal-label">Σφραγίς<br>Laugh School™</div></div>
+      <div class="seal"><div class="seal-emoji">🔱</div><div class="seal-line"></div><div class="seal-label">Lord of the Memes<br>Κοσμήτορας</div></div>
+    </div>
+    <p class="tagline">"In Memes We Trust, In Normies We Bust"</p>
+  </div>
+</div>
+<button class="print-btn" onclick="window.print()">🖨 Εκτύπωση / Αποθήκευση PDF</button>
+</body>
+</html>`;
+
+  const blob = new Blob([diplomaHTML], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'laugh_school_diploma.html';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 </script>
 </body>
 </html>
