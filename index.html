@@ -363,11 +363,11 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
       <label class="diploma-select-label">📚 Επίλεξε Μάθημα</label>
       <div class="course-pills">
         <button class="course-pill active" data-course="Cold Memes" data-emoji="🥶" data-teacher="The Cold Memer Teacher">🥶 Cold Memes</button>
-        <button class="course-pill" data-course="Hot Memes" data-emoji="🔥" data-teacher="THE LORD OF THE MEMES">🔥 Hot Memes</button>
+        <button class="course-pill" data-course="Hot Memes" data-emoji="🔥" data-teacher="The Cool Teacher">🔥 Hot Memes</button>
         <button class="course-pill" data-course="Waves" data-emoji="🌊" data-teacher="Sourdomemedon">🌊 Waves</button>
         <button class="course-pill" data-course="Templates" data-emoji="🎨" data-teacher="Memedologia">🎨 Templates</button>
-        <button class="course-pill" data-course="PHTWR" data-emoji="📸" data-teacher="Burger Memer">📸 PHTWR</button>
-        <button class="course-pill" data-course="CRINGE" data-emoji="😬" data-teacher="The Principal">😬 CRINGE</button>
+        <button class="course-pill" data-course="Rhetoric" data-emoji="📸" data-teacher="Burger Memer">📜 Rhetoric</button>
+        <button class="course-pill" data-course="Try not to Cringe up" data-emoji="😬" data-teacher="The Principal">😬 Try not to Cringe up</button>
       </div>
     </div>
 
@@ -448,6 +448,7 @@ const jokes = [
   { q: "— Έχεις μία ερώτηση και εγώ θα σου την απαντήσω. Ξέρω τα πάντα!\n— Αν ποτίσω τα κουνούπια με μελάνι, θα έχω δωρεάν τατουάζ;", a: "— Επόμενος!" },
   { q: "— Τι κάνει ένας κουρέας που παίρνει ρεπό;", a: "— Κόβει βόλτες..." },
   { q: "— Πού ζουν τα ψάρια;", a: "— Στη θάλασσα.\n— Ναι αλλά σε ποια διεύθυνση;" }
+  { q: "— Αν βρεις τι έχω μες στην τσάντα μου, θα σου δώσω ένα τσαμπί.", a: "— Πατάτες."}
 ];
 const now = new Date();
 let jIdx = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000) % jokes.length;
