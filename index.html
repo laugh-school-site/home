@@ -266,7 +266,7 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
   <div class="board-list">
     <div class="board-item">
       <span class="board-date">22 Μαρ 2026</span>
-      <p class="board-text"><strong>ΕΚΠΛΗΞΗ:</strong> Θα δημοσιοποιηθεί ένα τεράστιο Project του Laugh School.</p>
+      <p class="board-text"><strong>SNOWMANIDHS:</strong> Ο φίλτατος Χιονανθρωπίδης έκανε βίντεο όπου <b>μάθαινε σε έναν άνεργο πως να οδηγήσει!!!<b></p>
     </div>
     <div class="board-item">
       <span class="board-date">16 Μαρ 2026</span>
@@ -328,7 +328,7 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
   <p class="sec-sub">Επιλεγμένα με αγάπη. Αρχειοθετημένα με σοβαρότητα.</p>
   <div class="jokes-layout">
     <div class="joke-rotator">
-      <span class="joke-label">📅 Αστείο της Ημέρας</span>
+      <span class="joke-label">📅 Αστεία των αιώνων</span>
       <p id="joke-q"></p>
       <p id="joke-a"></p>
       <div class="joke-nav">
@@ -397,7 +397,7 @@ input:checked + .slider::before { transform: translateX(20px); background: #000;
     <div class="modal">
       <div class="modal-title">🎓 Λήψη Πτυχίου</div>
       <p class="modal-sub">Δώσε το όνομα του φοιτητή Memeολογίας:</p>
-      <input type="text" id="studentName" class="modal-input" placeholder="π.χ. Νίκος Παπαδόπουλος" maxlength="60"
+      <input type="text" id="studentName" class="modal-input" placeholder="π.χ. Γεώργιος Παπαδόπουλος" maxlength="60"
              onkeydown="if(event.key==='Enter')confirmDiploma()">
       <div class="modal-actions">
         <button class="btn btn-gold" onclick="confirmDiploma()">OK</button>
@@ -449,6 +449,7 @@ const jokes = [
   { q: "— Τι κάνει ένας κουρέας που παίρνει ρεπό;", a: "— Κόβει βόλτες..." },
   { q: "— Πού ζουν τα ψάρια;", a: "— Στη θάλασσα.\n— Ναι αλλά σε ποια διεύθυνση;" },
   { q: "— Αν βρεις τι έχω μες στην τσάντα μου, θα σου δώσω ένα τσαμπί.", a: "— Πατάτες."},
+  { q: "— Πώς λένε το περιστέρι που πετάει εφημερίδες;", a: "— Περιπτέρι..."},
 ];
 const now = new Date();
 let jIdx = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000) % jokes.length;
